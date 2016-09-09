@@ -1,0 +1,124 @@
+# vim:ft=ansible:
+#
+# Builds and deploys a website to a remote repository.
+# The current HEAD is deployed via `git push`.
+#
+# Run from the git root directory
+# Run with:
+#   ansible-playbook -i localhost, ansible/deploy.yml
+#   ansible-playbook -i localhost, ansible/deploy.yml -e "remote_name=production"
+#
+#
+---
+- hosts: 127.0.0.1
+  connection: local
+  force_handlers: True
+
+  vars:
+    theme_name: gottman
+    remote_name: freshpreview
+    build_command: gulp --production --no-color
+    build_artifact_paths:
+      - "wp-content/themes/DR6/dist"
+    release_branch_name: deploy
+
+  handlers:
+
+  # delete the branch
+  - name: cleanup branch
+    command: "{{ item }}"
+    with_items:
+      - git checkout {{ git_ref.stdout }}
+      - git branch -D {{ release_branch_name }}
+    args:
+      chdir: "{{ git_root.stdout }}"
+
+
+  tasks:
+
+  # wishlist: take a database backup
+
+  # setup
+  - name: get timestamp
+    command: date +%Y-%m-%d-%H-%M
+    register: timestamp
+    changed_when: false
+
+  - name: get git root
+    command: git rev-parse --show-toplevel
+    register: git_root
+    changed_when: false
+
+  - name: define paths and filenames
+    set_fact:
+      theme_root: "{{ git_root.stdout }}/wp-content/themes/{{ theme_name }}"
+      release_tag_name: release_src_{{ timestamp.stdout }}
+
+  - name: get current HEAD
+    # from http://stackoverflow.com/questions/6245570/how-to-get-current-branch-name-in-git
+    shell: "git reflog HEAD | grep 'checkout:' | head -1 | rev | cut -d' ' -f1 | rev"
+    register: git_ref
+    args:
+      chdir: "{{ git_root.stdout }}"
+    changed_when: false
+
+  - name: are we deploying to production?
+    shell: git remote -v | grep "{{ remote_name }}.*fetch" | grep -c "production"
+    register: is_production_deployment
+    failed_when: false
+    changed_when: false
+
+  # verify branch does not already exist so we can fail without the handler running
+  - name: verify branch name does not already exist
+    shell: git branch -a | tr -d ' ' | grep "^{{ release_branch_name }}$"
+    register: command_result
+    failed_when: "'{{ release_branch_name }}' in command_result.stdout"
+    changed_when: false
+
+  # create a branch
+  - name: create a temporary release branch
+    command: git checkout -b {{ release_branch_name }}
+    args:
+      chdir: "{{ git_root.stdout }}"
+    notify: cleanup branch
+
+  # build
+  - name: build release artifacts
+    command: "{{ build_command }}"
+    register: build
+    args:
+      chdir: "{{ theme_root }}"
+  - name: build output
+    debug: var="build.stdout.split('\n')"
+
+  # add build files
+  - name: add build artifacts
+    command: git add --force {{ item }}
+    with_items: "{{ build_artifact_paths }}"
+    args:
+      chdir: "{{ git_root.stdout }}"
+  - name: commit changes
+    command: git commit -m 'add build artifacts (`{{ build_command }}`)'
+    args:
+      chdir: "{{ git_root.stdout }}"
+
+  # deploy the codes
+  - name: deploy the codes
+    command: git push --force {{ remote_name }}
+    register: deployment
+    args:
+      chdir: "{{ git_root.stdout }}"
+  - name: deployment output
+    debug: var="deployment.stderr.split('\n')"
+
+  # wishlist: clear caches
+
+  # tag the release
+  - name: create git release tag
+    command: "{{ item }}"
+    with_items:
+      - git tag {{ release_tag_name }} {{ git_ref.stdout }}
+      - git push --tags
+    args:
+      chdir: "{{ git_root.stdout }}"
+    when: is_production_deployment.stdout == "1"
