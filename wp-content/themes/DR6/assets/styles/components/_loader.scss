@@ -1,0 +1,71 @@
+.loader {
+  perspective: 1000px;
+  width: 100%;
+  @include vertical-align(absolute);
+  @extend %open-sans-300;
+
+
+  &__one,
+  &__two,
+  &__three {
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 26px;
+    color: $dark-gray;
+    font-size: 100px;
+    line-height: 0;
+    opacity: 0;
+    transform-style: preserve-3d;
+  }
+
+  &__one {
+    left: 50%;
+    margin-left: -190px;
+    -webkit-transform: rotateZ(50deg) rotateY(65deg) scale(4);
+    -moz-transform: rotateZ(50deg) rotateY(65deg) scale(4);
+    transform: rotateZ(50deg) rotateY(65deg) scale(4);
+  }
+
+  &__two {
+    left: 50%;
+    margin-left: -34px;
+    -webkit-transform: rotateZ(-40deg) rotateY(69deg) scale(4);
+    -moz-transform: rotateZ(-40deg) rotateY(69deg) scale(4);
+    transform: rotateZ(-40deg) rotateY(69deg) scale(4);
+  }
+
+  &__three {
+    left: 50%;
+    margin-left: 106px;
+    -webkit-transform: rotateZ(20deg) rotateY(80deg) scale(4);
+    -moz-transform: rotateZ(20deg) rotateY(80deg) scale(4);
+    transform: rotateZ(20deg) rotateY(80deg) scale(4);
+  }
+}
+
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container,
+.front,
+.back {
+  width: 320px;
+  height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}

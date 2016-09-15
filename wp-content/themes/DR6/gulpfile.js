@@ -20,6 +20,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var babel        = require("gulp-babel");
+var scsslint     = require('gulp-scss-lint');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -117,6 +118,11 @@ var cssTasks = function(filename) {
       }));
     })();
 };
+
+gulp.task('scss-lint', function() {
+  return gulp.src(path.source + 'styles/*/*')
+    .pipe(scsslint({ config: 'scss-lint.yml' }));
+});
 
 // ### JS processing pipeline
 // Example
@@ -263,7 +269,7 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([path.source + 'styles/**/*'], ['styles']);
+  gulp.watch([path.source + 'styles/**/*'], ['scss-lint', 'styles']);
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);

@@ -1,4 +1,5 @@
 @import "common/variables";
+@import "common/mixins";
 
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
@@ -6,7 +7,9 @@
 // endbower
 
 @import "common/global";
+@import "common/fonts";
 @import "components/buttons";
+@import "components/loader";
 @import "components/comments";
 @import "components/forms";
 @import "components/grid";

@@ -1,0 +1,22 @@
+.banner {
+  @include gradient-directional($light-orange, $orange);
+  padding: 2px 15px 6px;
+
+  &__header {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 25px;
+  }
+}
+
+.brand {
+  @extend %rock-salt;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $white;
+  }
+}
