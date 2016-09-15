@@ -8,7 +8,9 @@
   "private": true,
   "dependencies": {
     "dynamics.js": "^1.1.1",
-    "bootstrap-sass": "3.3.6"
+    "bootstrap-sass": "3.3.6",
+    "isotope": "^3.0.1",
+    "isotope-packery": "^2.0.0"
   },
   "overrides": {
     "bootstrap-sass": {
@@ -31,6 +33,26 @@
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "isotope": {
+      "main": [
+        "./dist/isotope.pkgd.js"
+      ]
+    },
+    "masonry": {
+      "main": [
+        "./dist/masonry.pkgd.js"
+      ]
+    },
+    "packery": {
+      "main": [
+        "./dist/packery.pkgd.js"
+      ]
+    },
+    "isotope-packery": {
+      "main": [
+        "./packery-mode.pkgd.js"
       ]
     }
   }

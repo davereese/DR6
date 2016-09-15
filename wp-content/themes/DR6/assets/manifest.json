@@ -4,7 +4,10 @@
       "files": [
         "scripts/main.js"
       ],
-      "main": true
+      "main": true,
+      "exclude": {
+        "bower": ["outlayer", "doc-ready", "fizzy-ui-utils", "get-style-property", "get-size", "matches-selector", "eventEmitter", "eventie"]
+      }
     },
     "main.css": {
       "files": [

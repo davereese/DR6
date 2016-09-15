@@ -81,6 +81,11 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
+        $('.grid').isotope({
+          // options
+          layoutMode: 'packery',
+          itemSelector: '.grid-item',
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
