@@ -2,6 +2,7 @@
 .main {
   @include make-sm-column($main-sm-columns);
   min-height: calc(100vh - 36px);
+  padding-top: 50px;
 
   .sidebar-primary & {
     @include make-sm-column($main-sm-columns - $sidebar-sm-columns);

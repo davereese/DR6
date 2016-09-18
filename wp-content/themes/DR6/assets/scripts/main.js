@@ -72,6 +72,59 @@
         }
         animateLoader();
         dynamics.setTimeout(fadeLoader, 2000);
+
+        function map_range(value, low1, high1, low2, high2) {
+          return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+        }
+
+        function get_center(obj, type) {
+          let offset = obj.offset();
+          let width = obj.width();
+          let height = obj.height();
+          let centerX = offset.left + width / 2;
+          let centerY = offset.top + height / 2;
+          if ('X' === type) {
+            return centerX;
+          } else {
+            return centerY;
+          }
+        }
+
+        let animateFn = function(event) {
+        	let el = document.querySelector(".circle"); // get mouse position on x y
+
+          let x = event.clientX;
+          let y = event.clientY;
+          let WIDTH = document.body.clientWidth;
+
+          $('.block-container__block').each(function( index ) {
+            let centerX = get_center($(this), 'X');
+            let centerY = get_center($(this), 'Y');
+            let calcY = Math.round(map_range(x, centerX, WIDTH, 0, 60));
+            let calcX = Math.round(map_range(y, 0, centerY, 60, 0));
+
+            if( calcX < -23 ) {
+              calcX = -23;
+            } else if( calcX > 23 ) {
+              calcX = 23;
+            }
+
+            if( calcY > 26 ) {
+              calcY = 26;
+            } else if( calcY < -25 ) {
+              calcY = -25;
+            }
+
+            $.Velocity.hook($(this), "rotateX", calcX + "deg");
+            $.Velocity.hook($(this), "rotateY", calcY + "deg");
+          });
+        };
+
+        onmousemove = function(event) {
+          requestAnimationFrame(function() {
+            animateFn(event);
+          });
+        };
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

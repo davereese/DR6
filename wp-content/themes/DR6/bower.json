@@ -10,7 +10,8 @@
     "dynamics.js": "^1.1.1",
     "bootstrap-sass": "3.3.6",
     "isotope": "^3.0.1",
-    "isotope-packery": "^2.0.0"
+    "isotope-packery": "^2.0.0",
+    "velocity": "^1.2.3"
   },
   "overrides": {
     "bootstrap-sass": {
@@ -53,6 +54,11 @@
     "isotope-packery": {
       "main": [
         "./packery-mode.pkgd.js"
+      ]
+    },
+    "velocity": {
+      "main": [
+        "./velocity.js"
       ]
     }
   }
