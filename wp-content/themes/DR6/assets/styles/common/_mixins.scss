@@ -1,5 +1,15 @@
 /*
 * ----------------------------------
+/*  CSS transition
+* ----------------------------------
+*/
+@mixin transition($attr1, $time1, $attr2: $attr1, $time2: $time1) {
+  transition: $attr1 $time1, $attr2 $time2;
+}
+
+
+/*
+* ----------------------------------
 * Directional gradient
 * ----------------------------------
 */

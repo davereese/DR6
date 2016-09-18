@@ -134,10 +134,15 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
-        $('.grid').isotope({
-          // options
-          layoutMode: 'packery',
+        $grid = $('.grid').isotope({
           itemSelector: '.grid-item',
+          percentPosition: true,
+          //filter: filters,
+          layoutMode: 'packery',
+          packery: {
+            columnWidth: '.grid-sizer',
+            //gutter: '.gutter-sizer'
+          }
         });
       },
       finalize: function() {
