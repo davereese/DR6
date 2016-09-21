@@ -2,7 +2,7 @@
   perspective: 1000px;
   width: 100%;
   @include vertical-align(absolute);
-  @extend %open-sans-300;
+  @extend %cousine;
 
 
   &__one,

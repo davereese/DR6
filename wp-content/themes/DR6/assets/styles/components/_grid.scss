@@ -50,6 +50,8 @@
   }
 
   &--open {
+    width: 63.4%;
+
     @media (min-width: $screen-sm-min) {
       width: 31.2%;
     }

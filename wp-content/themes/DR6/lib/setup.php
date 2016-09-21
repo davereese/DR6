@@ -96,7 +96,7 @@ function display_sidebar() {
  */
 function assets() {
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
-  wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Rock+Salt', false, null);
+  wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Cousine|Rock+Salt', false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
