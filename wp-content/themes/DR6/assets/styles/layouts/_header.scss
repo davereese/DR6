@@ -1,5 +1,5 @@
 .banner {
-  @include gradient-directional($light-orange, $orange);
+  @include gradient-directional($light-brand-orange, $brand-orange);
   padding: 2px 15px 6px;
 
   &__header {

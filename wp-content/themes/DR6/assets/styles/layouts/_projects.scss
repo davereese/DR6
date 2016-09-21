@@ -2,27 +2,104 @@
   transform-style: preserve-3d;
   perspective: 9000px;
   backface-visibility: hidden;
-  margin-bottom: 25px;
+  $block: #{&};
 
   &__block {
-    background-color: $orange;
-    //@include gradient-directional($light-orange, $orange, 90deg);
-    transition: 1.5s;
-    transition-timing-function: ease-out;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: $brand-orange;
+    transition-property: width, background-color, transform;
+    transition-duration: 0.4s, 0.4s, 1.5s;
+    transition-timing-function: ease, ease, ease-out;
     transform: translate3d(0, 0, 145px);
     transform-style: preserve-3d;
+
+    @media (min-width: $screen-sm-min) {
+      width: 98px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      width: 107px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      width: 132px;
+    }
 
     &::before {
       content: "";
       display: block;
       padding-top: 100%;
       opacity: 0;
-      @include transition(opacity, 0.5s);
+      @include transition(padding-top, 0.5s);
+      transition-timing-function: ease;
       @include gradient-directional($dark-gray, darken($dark-gray, 20%));
+    }
+
+    &.red {
+      &::before {
+        @include gradient-directional($light-red, $red);
+      }
+    }
+
+    &.orange {
+      &::before {
+        @include gradient-directional($light-orange, $orange);
+      }
+    }
+
+    &.yellow {
+      &::before {
+        @include gradient-directional($light-yellow, $yellow);
+      }
+    }
+
+    &.green {
+      &::before {
+        @include gradient-directional($light-green, $green);
+      }
+    }
+
+    &.blue {
+      &::before {
+        @include gradient-directional($light-blue, $blue);
+      }
+    }
+
+    &.indego {
+      &::before {
+        @include gradient-directional($light-indego, $indego);
+      }
+    }
+
+    &.violet {
+      &::before {
+        @include gradient-directional($light-violet, $violet);
+      }
+    }
+
+    &.pink {
+      &::before {
+        @include gradient-directional($light-pink, $pink);
+      }
+    }
+
+    &.brown {
+      &::before {
+        @include gradient-directional($light-brown, $brown);
+      }
+    }
+
+    &.chartreuse {
+      &::before {
+        @include gradient-directional($light-chartreuse, $chartreuse);
+      }
     }
 
     &:hover {
       cursor: pointer;
+      //background-color: transparent;
 
       &::before {
         opacity: 1;
@@ -34,26 +111,29 @@
     position: absolute;
     display: block;
     width: 100%;
-    top: 16.5%;
+    top: 20.5%;
     left: 50%;
     margin-left: -50%;
     transform: translate3d(0, 0, 25px);
     text-align: center;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 3em;
     color: $white;
 
     @media (min-width: $screen-sm-min) {
+      top: 15.5%;
       font-size: 3.7em;
     }
 
     @media (min-width: $screen-md-min) {
-      font-size: 4.8em;
+      top: 17%;
+      font-size: 3.8em;
     }
 
     @media (min-width: $screen-lg-min) {
-      font-size: 5.6em;
+      top: 17.5%;
+      font-size: 4.6em;
     }
   }
 
@@ -65,11 +145,40 @@
     border: 1px solid rgba($white, 0.5);
     margin: 5%;
     transform: translate3d(0, 0, 10px);
+    @include transition(width, 0.5s, margin);
 
     &::before {
       content: "";
       display: block;
       padding-top: 100%;
+    }
+  }
+
+  &.grid-item--open {
+    #{$block}__block {
+      width: 286px;
+      background-color: $dark-gray;
+
+      @media (min-width: $screen-sm-min) {
+        width: 211px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        width: 231px;
+      }
+
+      @media (min-width: $screen-lg-min) {
+        width: 286px;
+      }
+
+      &::before {
+        background: transparent;
+      }
+    }
+
+    #{$block}__border {
+      margin: 3.3%;
+      width: 93.4%;
     }
   }
 }

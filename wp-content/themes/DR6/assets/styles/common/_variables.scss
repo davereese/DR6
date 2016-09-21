@@ -7,8 +7,31 @@ $sidebar-sm-columns:    4;
 
 // Colors
 $brand-primary:         #ff5600;
-$orange:                $brand-primary;
-$light-orange:          #ff7100;
+$brand-orange:          $brand-primary;
+$light-brand-orange:    #ff7100;
 $white:                 #fff;
 $light-gray:            #f9f9f9;
-$dark-gray:             #a7a7a7;
+$gray:                  #a7a7a7;
+$dark-gray:             #333;
+
+// Colorful colors
+$red:                   #96003d;
+$light-red:             #ff1d23;
+$orange:                $light-brand-orange;
+$light-orange:          #ffaf0d;
+$yellow:                #f90;
+$light-yellow:          #ffe900;
+$green:                 #34b236;
+$light-green:           #c1f533;
+$blue:                  #2570ff;
+$light-blue:            #18e1ff;
+$indego:                #0c8be8;
+$light-indego:          #0dff9f;
+$violet:                #9e04ff;
+$light-violet:          #ff0dbc;
+$pink:                  #ff005b;
+$light-pink:            #ff6eff;
+$brown:                 #9c4803;
+$light-brown:           $yellow;
+$chartreuse:            #ace600;
+$light-chartreuse:      #fff628;

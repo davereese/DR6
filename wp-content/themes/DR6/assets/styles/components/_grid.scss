@@ -17,11 +17,51 @@
  * Isotope Grid
  */
 .grid {
-  margin-left: 2%;
+  margin-left: 4%;
+  margin-bottom: 0;
+
+  @media (min-width: $screen-sm-min) {
+    margin-left: 2%;
+    margin-bottom: 30px;
+  }
 }
 
 .grid-item {
-  width: 14.5%;
+  width: 29.5%;
+  margin-bottom: 15px;
+
+  @media (min-width: $screen-sm-min) {
+    width: 14.5%;
+    margin-bottom: 15px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-bottom: 15px;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    margin-bottom: 22px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  &--open {
+    @media (min-width: $screen-sm-min) {
+      width: 31.2%;
+    }
+
+    @media (min-width: $screen-md-min) {
+      width: 31%;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      width: 31.4%;
+    }
+  }
 }
 
 .grid-sizer {

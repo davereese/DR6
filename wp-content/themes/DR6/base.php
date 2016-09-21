@@ -22,11 +22,11 @@ use Roots\Sage\Wrapper;
       <div class="content row">
         <main class="main">
           <?php include Wrapper\template_path(); ?>
-          <div class="loader hidden">
+          <!-- <div class="loader hidden">
             <div class="loader__one"><</div>
             <div class="loader__two">/</div>
             <div class="loader__three">></div>
-          </div>
+          </div> -->
         </main><!-- /.main -->
         <?php if (Setup\display_sidebar()) : ?>
           <aside class="sidebar">
