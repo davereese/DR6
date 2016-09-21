@@ -9,7 +9,7 @@ $args = array(
   'posts_per_page' => -1
 );
 
-$colors = array('red', 'orange', 'yellow', 'green', 'blue', 'indego', 'violet', 'pink', 'brown', 'chartreuse');
+$colors = array('red', 'orange', 'yellow', 'green', 'blue', 'indego', 'violet', 'pink', 'brown', 'chartreuse', 'purple');
 $used_colors = array();
 $used_colors2 = array();
 
@@ -20,8 +20,9 @@ if ( $work_query->have_posts() ) { ?>
       <div class="grid-sizer"></div>
   	  <div class="gutter-sizer"></div>
       <?php while ( $work_query->have_posts() ) { $work_query->the_post();
-        $title = str_replace('The ', '', $work_query->post->post_title);
+        $title = $work_query->post->post_title;
         $letter = substr($title, 0, 1);
+        $new_title = substr($title, 1);
         if ( 1 <= count($colors)) {
           $color = $colors[array_rand($colors, 1)];
           $colors = array_diff($colors, array($color));
@@ -33,7 +34,8 @@ if ( $work_query->have_posts() ) { ?>
         }
         echo '<div class="grid-item block-container">';
           echo '<div class="block-container__block '.$color.'">';
-            echo '<div class="block-container__block-title">'.$letter.'</div>';
+            //echo '<div class="block-container__block-letter">'.$letter.'</div>';
+            echo '<div class="block-container__block-title"><span>'.$letter.'</span><span>'.$new_title.'</span></div>';
             echo '<div class="block-container__border"></div>';
             echo '</div>';
         echo '</div>';
