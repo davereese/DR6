@@ -51,11 +51,11 @@
   }
 
   &--open {
-    width: 63.4%;
+    width: 95%;
     z-index: 20;
 
     @media (min-width: $screen-sm-min) {
-      width: 31.2%;
+      width: 48.2%;
     }
 
     @media (min-width: $screen-md-min) {
