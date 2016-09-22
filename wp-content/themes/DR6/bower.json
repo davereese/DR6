@@ -11,7 +11,8 @@
     "bootstrap-sass": "3.3.6",
     "isotope": "^3.0.1",
     "isotope-packery": "^2.0.0",
-    "velocity": "^1.2.3"
+    "velocity": "^1.2.3",
+    "font-awesome": "fontawesome#^4.6.3"
   },
   "overrides": {
     "bootstrap-sass": {
@@ -59,6 +60,12 @@
     "velocity": {
       "main": [
         "./velocity.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
       ]
     }
   }

@@ -20,8 +20,6 @@ function get_center(obj, type) {
 
 let animateFn = function(event) {
   if( jQuery('.grid').css('margin-bottom') === '30px' ) {
-    let el = document.querySelector(".circle"); // get mouse position on x y
-
     let x = event.clientX;
     let y = event.clientY;
     let WIDTH = document.body.clientWidth;
@@ -32,16 +30,21 @@ let animateFn = function(event) {
       let calcY = Math.round(map_range(x, centerX, WIDTH, 0, 60));
       let calcX = Math.round(map_range(y, 0, centerY, 60, 0));
 
-      if( calcX < -23 ) {
-        calcX = -23;
-      } else if( calcX > 23 ) {
-        calcX = 23;
-      }
+      if( jQuery(this).parent().hasClass('grid-item--open') ) {
+        calcX = 0;
+        calcY = 0;
+      } else {
+        if( calcX < -23 ) {
+          calcX = -23;
+        } else if( calcX > 23 ) {
+          calcX = 23;
+        }
 
-      if( calcY > 26 ) {
-        calcY = 26;
-      } else if( calcY < -25 ) {
-        calcY = -25;
+        if( calcY > 26 ) {
+          calcY = 26;
+        } else if( calcY < -25 ) {
+          calcY = -25;
+        }
       }
 
       jQuery.Velocity.hook(jQuery(this), "rotateX", calcX + "deg");
@@ -145,13 +148,13 @@ let animateFn = function(event) {
           //filter: filters,
           layoutMode: 'packery',
           packery: {
-            columnWidth: '.grid-sizer',
-            //gutter: '.gutter-sizer'
+            columnWidth: '.grid-sizer'
           }
         });
 
         $('.grid-item').on('click', function(e) {
           $(this).toggleClass('grid-item--open');
+          $(this).toggleClass('grid-item--closed');
           setTimeout(function(){
             $grid.isotope('layout');
           }, 10);

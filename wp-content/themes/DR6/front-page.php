@@ -23,6 +23,18 @@ if ( $work_query->have_posts() ) { ?>
         $title = $work_query->post->post_title;
         $letter = substr($title, 0, 1);
         $new_title = substr($title, 1);
+        $date = explode('-', explode(' ',$work_query->post->post_date)[0]);
+        $link = get_field('link');
+        $github = get_field('github');
+
+        if ( $link ) {
+          $link = '<a class="fa fa-globe" href="'.$link.'" target="_blank"></a>';
+        }
+
+        if ( $github ) {
+          $github = '<a class="fa fa-github" href="'.$github.'" target="_blank"></a>';
+        }
+
         if ( 1 <= count($colors)) {
           $color = $colors[array_rand($colors, 1)];
           $colors = array_diff($colors, array($color));
@@ -32,10 +44,15 @@ if ( $work_query->have_posts() ) { ?>
           $used_colors = array_diff($used_colors, array($color));
           array_push($used_colors2, $used_colors);
         }
-        echo '<div class="grid-item block-container">';
+
+        echo '<div class="grid-item grid-item--closed block-container">';
           echo '<div class="block-container__block '.$color.'">';
-            //echo '<div class="block-container__block-letter">'.$letter.'</div>';
-            echo '<div class="block-container__block-title"><span>'.$letter.'</span><span>'.$new_title.'</span></div>';
+            echo '<div class="block-container__block-content">';
+              echo '<div class="block-container__title"><span>'.$letter.'</span><span>'.$new_title.'</span></div>';
+              echo '<div class="block-container__copy">'.$work_query->post->post_content.'</div>';
+              echo '<div class="block-container__meta">'.$link.''.$github.'</div>';
+              echo '<div class="block-container__date">'.$date[1].'-'.$date[0].'</div>';
+            echo '</div>';
             echo '<div class="block-container__border"></div>';
             echo '</div>';
         echo '</div>';
