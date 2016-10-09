@@ -1,5 +1,26 @@
+::-moz-selection {
+  background: $brand-primary;
+  color: $white;
+}
+
+::selection {
+  background: $brand-primary;
+  color: $white;
+}
+
+.element::-moz-selection {
+  background: $brand-primary;
+  color: $white;
+}
+
+.element::selection {
+  background: $brand-primary;
+  color: $white;
+}
+
 body {
   background-color: $light-gray;
+  overflow-x: hidden;
 }
 
 .vertical-padding {

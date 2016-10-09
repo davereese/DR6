@@ -1,3 +1,11 @@
+.projects {
+  margin-bottom: 30px;
+
+  @media (min-width: $screen-sm-min) {
+    margin-bottom: 100px;
+  }
+}
+
 .block-container {
   transform-style: preserve-3d;
   perspective: 9000px;
@@ -29,7 +37,7 @@
     }
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       padding-top: 100%;
       opacity: 0;
@@ -168,7 +176,7 @@
     @include transition(width, 0.5s, margin);
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       padding-top: 100%;
     }

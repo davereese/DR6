@@ -1,22 +1,247 @@
 .intro {
-  margin: 0 0 50px;
-  @extend %cousine;
+  margin: 0 0 65px;
+  @extend %quicksand400;
   text-align: center;
+  line-height: 1.5;
   font-size: 1.2em;
   color: lighten($dark-gray, 25%);
 
   @media (min-width: $screen-sm-min) {
     font-size: 1.7em;
-    margin: 10px 0 60px;
+    margin: 0 0 60px;
   }
 
   @media (min-width: $screen-md-min) {
     font-size: 1.9em;
-    margin: 20px 0 70px;
   }
 
   @media (min-width: $screen-lg-min) {
-    font-size: 2.3em;
-    margin: 30px 0 80px;
+    font-size: 2.2em;
+    margin: 10px 0 70px;
+  }
+
+  &--fadable {
+    opacity: 1;
+    @include transition(opacity, 0.8s, filter);
+  }
+
+  &--faded {
+    opacity: 0.5;
+    filter: blur(5px);
+  }
+
+  .interactive {
+    @include interactive;
+
+    &.business-input {
+      &::before {
+        content: 'business name, type, etc.';
+      }
+    }
+
+    &.contact-input {
+      &::before {
+        content: 'email@example.com';
+      }
+    }
+  }
+
+  .gform_wrapper {
+    .validation_error {
+      display: none;
+    }
+
+    .top_label {
+      .gfield {
+        display: none;
+      }
+    }
+
+    .gform_footer {
+      padding: 0;
+
+      input[type=submit] {
+        position: absolute;
+        display: inline-block;
+        border: 0;
+        padding: 4px 15px;
+        margin-left: 50vw;
+        left: 50%;
+        bottom: -46px;
+        margin-bottom: 0;
+        width: auto;
+        outline: none;
+        background-color: $light-brand-orange;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        @include transition(all, 1s);
+        color: $white;
+        @extend %quicksand700;
+        font-size: 0.8em;
+
+        @media (min-width: $screen-sm-min) {
+          font-size: 16px;
+          bottom: 22px;
+          padding: 7px 20px;
+        }
+
+        &:hover {
+          background-color: $dark-gray;
+        }
+      }
+    }
+  }
+
+  &.dirty {
+    .gform_wrapper {
+      .gform_footer {
+        input[type=submit] {
+          left: 30.4%;
+
+          @media (min-width: $screen-sm-min) {
+            left: 37%;
+          }
+
+          @media (min-width: $screen-md-min) {
+            left: 40%;
+          }
+
+          @media (min-width: $screen-lg-min) {
+            left: 41.7%;
+          }
+        }
+      }
+    }
+  }
+
+  .gforms_confirmation_message {
+    display: none;
+  }
+}
+
+.intro-completed {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 30px);
+  height: 100%;
+
+  &--now {
+    display: block;
+  }
+
+  &__loader {
+    position: absolute;
+    height: 34px;
+    margin-left: 50vw;
+    left: 29%;
+    bottom: -46px;
+    margin-bottom: 0;
+    width: 100px;
+    background-color: $dark-gray;
+    border-radius: 4px;
+    @include transition(all, 0.8s);
+    transition-timing-function: cubic-bezier(0.68, 0, 0.35, 1);
+    $block: #{&};
+
+    @media (min-width: $screen-sm-min) {
+      height: 38px;
+      bottom: 22px;
+      left: 36.5%;
+    }
+
+    @media (min-width: $screen-md-min) {
+      left: 39.7%;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      left: 41.5%;
+    }
+
+    &__loaded {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $dark-gray;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      @include transition(all, 1s);
+      transition-timing-function: cubic-bezier(0.68, 0, 0.35, 1);
+      transition-delay: 0.45s;
+    }
+
+    &--now {
+      background-color: $light-brand-orange;
+      left: 0;
+      margin-left: 0;
+      bottom: 50%;
+      width: 100%;
+      height: 6px;
+      border-radius: 0;
+      transition-duration: 0.5s;
+      transition-delay: 0s;
+
+      @media (min-width: $screen-sm-min) {
+        bottom: 60%;
+      }
+
+      @media (min-width: $screen-md-min) {
+        height: 7px;
+      }
+
+      #{$block}__loaded {
+        width: 100%;
+      }
+    }
+
+    &--remove {
+      bottom: 45%;
+      opacity: 0;
+    }
+  }
+
+  &__complete {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    bottom: 30%;
+    @extend %quicksand400;
+    text-align: center;
+    font-size: 1.5em;
+    color: lighten($dark-gray, 25%);
+    @include transition(all, 0.7s);
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 1.7em;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 1.9em;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      font-size: 2.2em;
+    }
+
+    svg {
+      margin-top: -10px;
+      width: 40px;
+      vertical-align: middle;
+
+      @media (min-width: $screen-sm-min) {
+        width: 50px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        width: 60px;
+      }
+    }
+
+    &--on {
+      opacity: 1;
+      bottom: 50%;
+    }
   }
 }

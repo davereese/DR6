@@ -2,6 +2,7 @@
  * Google Fonts
  * - font-family: 'Rock Salt', sans-serif;
  * - font-family: 'Cousine', monospace;
+ * - font-family: 'Quicksand', sans-serif;
 **/
 
 %rock-salt {
@@ -10,5 +11,14 @@
 
 %cousine {
   font-family: 'Cousine', monospace;
-  font-weight: 300;
+}
+
+%quicksand400 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+}
+
+%quicksand700 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
 }

@@ -32,3 +32,221 @@
   -ms-transform: perspective(1px) translateY(-50%);
   transform: perspective(1px) translateY(-50%);
 }
+
+/*
+* ----------------------------------
+interactive element
+
+Basic interactive element styling
+
+Optional addition of .options container filled with .option items creates dropdown menu styling
+
+.center				- center align content and menu
+.mobile-options		- only show dropdown on mobile, otherwise, show whole list as links or buttons
+* ----------------------------------
+*/
+@mixin interactive() {
+  position: relative;
+  display: inline-block;
+  min-width: 50px;
+  height: 20px;
+  padding: 0 3px;
+  outline: none;
+  background-color: darken($light-gray, 6%);
+  border-radius: 4px;
+  border-bottom: rgba($brand-primary, 0) 2px solid;
+  line-height: normal;
+  @include transition(all, 0.5s);
+
+  @media (min-width: $screen-sm-min) {
+    height: 29px;
+    padding: 0 5px;
+    min-width: 70px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    height: 33px;
+    min-width: 80px;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    height: 37px;
+  }
+
+  &:hover,
+  &:focus {
+    border-radius: 0;
+    cursor: pointer;
+    background-color: $light-gray;
+    border-bottom: $brand-primary 2px solid;
+  }
+
+  &.select-input {
+    padding: 0;
+
+    &:hover {
+      .selection {
+        padding: 0 6px 0 0;
+
+        @media (min-width: $screen-sm-min) {
+          padding: 0 10px 0 0;
+        }
+
+        &::after {
+          right: -3px;
+          border-top: 7px solid lighten($dark-gray, 25%);
+        }
+      }
+    }
+  }
+
+  &.validation-error {
+    border-bottom: $brand-primary 2px solid;
+  }
+
+  &::before {
+    @include transition(all 0.4s cubic-bezier(0.52, 0, 0.08, 1) 0s);
+    display: inline-block;
+    position: absolute;
+    opacity: 0;
+    width: 200px;
+    top: 15px;
+    color: darken($gray-light, 35%);
+  }
+
+  .selection {
+    outline: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0 3px;
+    height: 20px;
+    border-bottom: rgba($brand-primary, 0) 2px solid;
+    vertical-align: bottom;
+    @include transition(all, 0.5s);
+
+    @media (min-width: $screen-sm-min) {
+      padding: 0 5px;
+      height: 29px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      height: 32px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      height: 37px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      right: -6px;
+      top: 0.55em;
+      width: 6px;
+      height: 4px;
+      border-top: 3px solid $light-gray;
+      border-left: 3px solid $light-gray;
+      border-right: 3px solid $light-gray;
+      @include transition(all, 0.5s);
+
+      @media (min-width: $screen-sm-min) {
+        right: -8px;
+        width: 10px;
+        height: 10px;
+        border-top-width: 9px;
+        border-left-width: 5px;
+        border-right-width: 5px;
+      }
+    }
+
+    &:focus {
+      background-color: $light-gray;
+      border-bottom: $brand-primary 2px solid;
+    }
+  }
+
+  .options {
+    @include transition(all 0.25s cubic-bezier(0.52, 0, 0.08, 1) 0s);
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    width: 200px;
+    max-height: 0;
+    top: 5px;
+    left: 50%;
+    margin-left: -100px;
+    z-index: 11;
+    background-color: transparent;
+    line-height: 1.7;
+    color: rgba($white, 0);
+    user-select: none;
+    font-size: 0.8em;
+    box-shadow: 0 1px 1px rgba($dark-gray, 0);
+
+    @media (min-width: $screen-sm-min) {
+      width: 250px;
+      margin-left: -125px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      width: 300px;
+      margin-left: -150px;
+    }
+
+    .option {
+      display: block;
+      padding: 0 0 0 3px;
+
+      &.button {
+        width: 100%;
+        border: 0;
+        background-color: transparent;
+        font-family: 'MuseoSans-100';
+        text-transform: capitalize;
+        color: $white;
+      }
+    }
+  }
+
+  &:focus {
+    &::before {
+      opacity: 1;
+      top: 25px;
+
+      @media (min-width: $screen-sm-min) {
+        top: 26px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        top: 33px;
+      }
+    }
+
+    .options {
+      top: -60px;
+      background-color: $brand-primary;
+      max-height: 330px;
+      color: $white;
+      box-shadow: 0 5px 20px rgba($dark-gray, 0.4);
+
+      @media (min-width: $screen-md-min) {
+        top: -92px;
+      }
+
+      .option {
+        padding: 2px 0 2px 3px;
+
+        &.selected {
+          background-color: lighten(saturate($brand-primary, 10%), 10%);
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: $white;
+          color: $gray-dark;
+        }
+      }
+    }
+  }
+}
