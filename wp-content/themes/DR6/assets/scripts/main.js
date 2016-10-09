@@ -26,8 +26,8 @@ function get_center(obj, type) {
 
 let animateFn = function(event) {
   if ( jQuery('.grid').css('margin-bottom') === '30px' ) {
-    let x = event.clientX;
-    let y = event.clientY;
+    let x = event.pageX;
+    let y = event.pageY;
     let WIDTH = document.body.clientWidth;
 
     jQuery('.block-container__block').each(function( index ) {
