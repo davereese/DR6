@@ -21,9 +21,9 @@
       <span tabindex="9" class="interactive select-input thing1-select" data-target="input_2_5">
         <span class="selection">web apps</span>
         <span class="options">
-          <span class="option">angularJS</span>
           <span class="option">web accessibility</span>
           <span class="option">wordpress</span>
+          <span class="option">angularJS</span>
           <span class="option">mobile/responsive</span>
           <span class="option custom">-- write your own --</span>
         </span>
@@ -31,9 +31,9 @@
       <span tabindex="10" class="interactive select-input thing2-select" data-target="input_2_6">
         <span class="selection">drawings</span>
         <span class="options">
-          <span class="option">UI/UX design &amp; dev</span>
-          <span class="option">interactive storytelling</span>
           <span class="option">eCommerce</span>
+          <span class="option">interactive storytelling</span>
+          <span class="option">UI/UX design &amp; dev</span>
           <span class="option">brand development</span>
           <span class="option custom">-- write your own --</span>
         </span>
@@ -41,9 +41,9 @@
       <span tabindex="11" class="interactive select-input thing3-select" data-target="input_2_7">
         <span class="selection">beer</span>
         <span class="options">
-          <span class="option">the cutting edge</span>
-          <span class="option">elegant solutions</span>
           <span class="option">staying active</span>
+          <span class="option">elegant solutions</span>
+          <span class="option">the cutting edge</span>
           <span class="option">other cool stuff</span>
           <span class="option custom">-- write your own --</span>
         </span>
