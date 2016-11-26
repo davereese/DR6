@@ -24,3 +24,15 @@ add_action('customize_preview_init', __NAMESPACE__ . '\\customize_preview_js');
  * Gravity Forms
  *---------------------------------------*/
 add_filter( 'gform_confirmation_anchor_2', '__return_false' );
+
+/*----------------------------------------
+ * Email Obfuscation
+ *---------------------------------------*/
+ function wpcodex_hide_email_shortcode( $atts , $content = null ) {
+ 	if ( ! is_email( $content ) ) {
+ 		return;
+ 	}
+
+ 	return '<a href="mailto:' . antispambot( $content ) . '">' . antispambot( $content ) . '</a>';
+ }
+ add_shortcode( 'hide_email', __NAMESPACE__ . '\\wpcodex_hide_email_shortcode' );

@@ -1,7 +1,7 @@
 // Grid system
 .main {
   @include make-sm-column($main-sm-columns);
-  min-height: calc(100vh - 36px);
+  min-height: calc(100vh - 56px);
   padding-top: 50px;
 
   .sidebar-primary & {

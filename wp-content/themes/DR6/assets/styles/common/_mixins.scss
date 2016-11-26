@@ -94,7 +94,11 @@ Optional addition of .options container filled with .option items creates dropdo
 
         &::after {
           right: -3px;
-          border-top: 7px solid lighten($dark-gray, 25%);
+          border-top: 3px solid lighten($dark-gray, 25%);
+
+          @media (min-width: $screen-sm-min) {
+            border-top: 7px solid lighten($dark-gray, 25%);
+          }
         }
       }
     }
@@ -151,7 +155,7 @@ Optional addition of .options container filled with .option items creates dropdo
       @include transition(all, 0.5s);
 
       @media (min-width: $screen-sm-min) {
-        right: -8px;
+        right: -10px;
         width: 10px;
         height: 10px;
         border-top-width: 9px;

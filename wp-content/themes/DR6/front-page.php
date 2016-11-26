@@ -67,9 +67,9 @@ $args = array(
   'posts_per_page' => -1
 );
 
-$colors = array('red', 'orange', 'yellow', 'green', 'blue', 'indego', 'violet', 'pink', 'brown', 'chartreuse', 'purple');
-$used_colors = array();
-$used_colors2 = array();
+// $colors = array('red', 'orange', 'yellow', 'green', 'blue', 'indego', 'violet', 'pink', 'brown', 'chartreuse', 'purple');
+// $used_colors = array();
+// $used_colors2 = array();
 
 $work_query = new WP_Query( $args );
 if ( $work_query->have_posts() ) { ?>
@@ -94,15 +94,16 @@ if ( $work_query->have_posts() ) { ?>
             $github = '<a class="fa fa-github" href="'.$github.'" target="_blank"></a>';
           }
 
-          if ( 1 <= count($colors)) {
-            $color = $colors[array_rand($colors, 1)];
-            $colors = array_diff($colors, array($color));
-            array_push($used_colors, $color);
-          } else {
-            $color = $used_colors[array_rand($used_colors, 1)];
-            $used_colors = array_diff($used_colors, array($color));
-            array_push($used_colors2, $used_colors);
-          }
+          $color = '';
+          // if ( 1 <= count($colors)) {
+          //   $color = $colors[array_rand($colors, 1)];
+          //   $colors = array_diff($colors, array($color));
+          //   array_push($used_colors, $color);
+          // } else {
+          //   $color = $used_colors[array_rand($used_colors, 1)];
+          //   $used_colors = array_diff($used_colors, array($color));
+          //   array_push($used_colors2, $used_colors);
+          // }
 
           echo '<div class="grid-item grid-item--closed block-container">';
             echo '<div class="block-container__block '.$color.'">';

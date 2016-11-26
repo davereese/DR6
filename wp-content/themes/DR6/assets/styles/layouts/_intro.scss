@@ -1,5 +1,6 @@
 .intro {
   margin: 0 0 65px;
+  max-height: 1000px;
   @extend %quicksand400;
   text-align: center;
   line-height: 1.5;
@@ -22,12 +23,20 @@
 
   &--fadable {
     opacity: 1;
-    @include transition(opacity, 0.8s, filter);
+    @include transition(all, 0.8s);
   }
 
   &--faded {
     opacity: 0.5;
     filter: blur(5px);
+  }
+
+  &--done {
+    margin-top: -200px;
+    max-height: 200px;
+    opacity: 0;
+    transition-duration: 1.5s;
+    transition-timing-function: cubic-bezier(0.68, 0, 0.35, 1);
   }
 
   .interactive {
@@ -58,6 +67,7 @@
     }
 
     .gform_footer {
+      opacity: 0;
       padding: 0;
 
       input[type=submit] {
@@ -98,6 +108,8 @@
   &.dirty {
     .gform_wrapper {
       .gform_footer {
+        opacity: 1;
+
         input[type=submit] {
           right: 0;
 
@@ -129,9 +141,16 @@
   top: 0;
   width: calc(100% - 30px);
   height: 100%;
+  @include transition(all, 1.5s);
 
   &--now {
     display: block;
+  }
+
+  &--done {
+    opacity: 0;
+    margin-top: -35px;
+    transition-timing-function: cubic-bezier(0.68, 0, 0.35, 1);
   }
 
   &__loader {
@@ -179,9 +198,9 @@
     &--now {
       background-color: $light-brand-orange;
       left: 0;
-      margin-left: 0;
+      margin-left: 11%;
       bottom: 50%;
-      width: 100%;
+      width: 78%;
       height: 6px;
       border-radius: 0;
       transition-duration: 0.5s;

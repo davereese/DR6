@@ -43,117 +43,123 @@
       opacity: 0;
       @include transition(padding-top, 0.5s);
       transition-timing-function: ease;
-      @include gradient-directional($dark-gray, darken($dark-gray, 20%));
+      @include gradient-directional(lighten($dark-gray, 10%), darken($dark-gray, 25%));
     }
 
-    &.red {
-      a:hover {
-        color: $light-red;
-      }
+  // Not sure if I want to use these colors yet
+  //   &.red {
+  //     a:hover {
+  //       color: $light-red;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-red, $red);
+  //     }
+  //   }
+  //
+  //   &.orange {
+  //     a:hover {
+  //       color: $light-orange;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-orange, $orange);
+  //     }
+  //   }
+  //
+  //   &.yellow {
+  //     a:hover {
+  //       color: $light-yellow;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-yellow, $yellow);
+  //     }
+  //   }
+  //
+  //   &.green {
+  //     a:hover {
+  //       color: $light-green;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-green, $green);
+  //     }
+  //   }
+  //
+  //   &.blue {
+  //     a:hover {
+  //       color: $light-blue;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-blue, $blue);
+  //     }
+  //   }
+  //
+  //   &.indego {
+  //     a:hover {
+  //       color: $light-indego;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-indego, $indego);
+  //     }
+  //   }
+  //
+  //   &.violet {
+  //     a:hover {
+  //       color: $light-violet;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-violet, $violet);
+  //     }
+  //   }
+  //
+  //   &.pink {
+  //     a:hover {
+  //       color: $light-pink;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-pink, $pink);
+  //     }
+  //   }
+  //
+  //   &.brown {
+  //     a:hover {
+  //       color: $light-brown;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-brown, $brown);
+  //     }
+  //   }
+  //
+  //   &.chartreuse {
+  //     a:hover {
+  //       color: $light-chartreuse;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-chartreuse, $chartreuse);
+  //     }
+  //   }
+  //
+  //   &.purple {
+  //     a:hover {
+  //       color: $light-purple;
+  //     }
+  //
+  //     &::before {
+  //       @include gradient-directional($light-purple, $purple);
+  //     }
+  //   }
+  //
 
-      &::before {
-        @include gradient-directional($light-red, $red);
-      }
-    }
-
-    &.orange {
-      a:hover {
-        color: $light-orange;
-      }
-
-      &::before {
-        @include gradient-directional($light-orange, $orange);
-      }
-    }
-
-    &.yellow {
-      a:hover {
-        color: $light-yellow;
-      }
-
-      &::before {
-        @include gradient-directional($light-yellow, $yellow);
-      }
-    }
-
-    &.green {
-      a:hover {
-        color: $light-green;
-      }
-
-      &::before {
-        @include gradient-directional($light-green, $green);
-      }
-    }
-
-    &.blue {
-      a:hover {
-        color: $light-blue;
-      }
-
-      &::before {
-        @include gradient-directional($light-blue, $blue);
-      }
-    }
-
-    &.indego {
-      a:hover {
-        color: $light-indego;
-      }
-
-      &::before {
-        @include gradient-directional($light-indego, $indego);
-      }
-    }
-
-    &.violet {
-      a:hover {
-        color: $light-violet;
-      }
-
-      &::before {
-        @include gradient-directional($light-violet, $violet);
-      }
-    }
-
-    &.pink {
-      a:hover {
-        color: $light-pink;
-      }
-
-      &::before {
-        @include gradient-directional($light-pink, $pink);
-      }
-    }
-
-    &.brown {
-      a:hover {
-        color: $light-brown;
-      }
-
-      &::before {
-        @include gradient-directional($light-brown, $brown);
-      }
-    }
-
-    &.chartreuse {
-      a:hover {
-        color: $light-chartreuse;
-      }
-
-      &::before {
-        @include gradient-directional($light-chartreuse, $chartreuse);
-      }
-    }
-
-    &.purple {
-      a:hover {
-        color: $light-purple;
-      }
-
-      &::before {
-        @include gradient-directional($light-purple, $purple);
-      }
+    a:hover {
+      color: $light-brand-orange;
     }
 
     &:hover {
@@ -251,6 +257,7 @@
     bottom: 10px;
     right: 14px;
     opacity: 0;
+    color: darken($light-gray, 30%);
     font-size: 0.8em;
     @include transition(opacity, 0.3s);
   }
@@ -292,8 +299,8 @@
     #{$block}__border {
       margin: 2.5%;
       width: 95%;
-      background-color: $dark-gray;
-      border: 1px solid $dark-gray;
+      background-color: lighten($dark-gray, 10%);
+      border: 1px solid lighten($dark-gray, 10%);
     }
 
     #{$block}__title {

@@ -1,0 +1,26 @@
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  max-height: 0;
+  background-color: darken($light-gray, 3%);
+  z-index: 10;
+  @extend %quicksand400;
+  @include transition(all, 1.5s);
+  overflow: hidden;
+
+  &.footer--on {
+    padding: 6px 0 8px;
+    max-height: 36px;
+  }
+
+  a {
+    color: $gray;
+    font-size: 16px;
+
+    &:hover,
+    &:focus {
+      color: darken($gray, 10%);
+    }
+  }
+}
