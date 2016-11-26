@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit
 Requires at least: 3.6.0
-Tested up to: 4.6.0
+Tested up to: 4.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,8 +106,49 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
-= 5.4.6-RC1 =
-* Flexible content field: Fixed bug where radio input values were lost when adding/duplicating a layout
+= 5.5.0-RC1 =
+* True False field: Added new 'ui' setting which renders as a toggle switch
+* WYSIWYG field: Added new 'delay' setting which delays tinymce initialization until the field is clicked
+* Checkbox field: Added new 'allow_custom' and 'save_custom' settings allowing you to add custom choices
+* Select field: Fixed bug where Select2 fields did not correctly use the ‘allow null’ setting
+* Clone field: Fixed bug causing save/load issues found when 2 sub fields clone in the same field/group.
+* Flexible Content field: Improved popup style and validation messages
+* Google Map field: Prevent scroll zoom
+* Date picker field: Added better compatibility logic for custom 'date_format' setting found in version < 5.0.0
+* API: acf_form() 'id' setting is now used as 'id' attribute in <form> element
+* Options page: Fixed incorrect redirect URL from a sub options page
+* Core: Added support for the wp_termmeta table (includes DB upgrade)
+* Core: Added new 'select_2_version' setting which can be changed between 3 and 4
+* Core: Added new 'enqueue_select2' setting which can be used to prevent the library from being enqueued
+* Core: Added new 'enqueue_google_maps' setting which can be used to prevent the library from being enqueued
+* Core: Minor fixes and improvements
+
+* Language: Updated Portuguese translation - thanks to Pedro Mendonca
+* Language: Updated Swiss German translation - thanks to Raphael Hüni
+
+= 5.4.8 =
+* Flexible Content field: Fixed bug in 'layout_title' filter preventing values being loaded correctly
+
+= 5.4.7 =
+* Time Picker field: Fixed bug preventing default time from being selected
+* Date Picker field: Improved compatibility with unix timestamp values
+* File field: Fixed validation bugs when used as a sub field (multiple selection)
+* Select field: Fixed bug incorrectly allowing a disabled field (hidden by conditional logic) to save values
+* API: Added new `add_sub_row()` function
+* API: Added new `update_sub_row()` function
+* API: Added new `delete_sub_row()` function
+* Core: Fixed bug causing 'sync' issues with sub clone fields
+* Core: Minor fixes and improvements
+
+= 5.4.6 =
+* Gallery field: Fixed bug where open sidebar fields were saved to post
+* Flexible Content field: Fixed bug causing Google map render issue within collapsed layout
+* Flexible Content field: Fixed bug during 'duplicate layout' where radio input values were lost
+* API: Fixed bug causing `get_row(true)` to return incorrect values
+* Core: Fixed bug where preview values did not load for a draft post
+* Core: Added notice when PRO license fails to validate URL
+* Core: Fixed bug where conditional logic would incorrectly enable select elements
+* Core: Minor fixes and improvements
 
 = 5.4.5 =
 * API: Fixed bug in `acf_form()` where AJAX validation ignored 'post_title'
