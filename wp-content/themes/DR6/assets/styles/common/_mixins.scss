@@ -41,7 +41,7 @@ Basic interactive element styling
 
 Optional addition of .options container filled with .option items creates dropdown menu styling
 
-.center				- center align content and menu
+.center   				- center align content and menu
 .mobile-options		- only show dropdown on mobile, otherwise, show whole list as links or buttons
 * ----------------------------------
 */
@@ -138,7 +138,7 @@ Optional addition of .options container filled with .option items creates dropdo
     }
 
     @media (min-width: $screen-lg-min) {
-      height: 37px;
+      height: 39px;
     }
 
     &::after {

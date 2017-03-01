@@ -113,17 +113,21 @@
         input[type=submit] {
           right: 0;
 
+          @media (min-width: 641px) {
+            right: -16px;
+          }
+
           @media (min-width: $screen-sm-min) {
             right: initial;
-            left: 37%;
+            left: 38%;
           }
 
           @media (min-width: $screen-md-min) {
-            left: 40%;
+            left: 40.5%;
           }
 
           @media (min-width: $screen-lg-min) {
-            left: 41.7%;
+            left: 42%;
           }
         }
       }

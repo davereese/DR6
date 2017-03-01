@@ -23,7 +23,7 @@
         <span class="options">
           <span class="option">web accessibility</span>
           <span class="option">wordpress</span>
-          <span class="option">angularJS</span>
+          <span class="option">angular</span>
           <span class="option">mobile/responsive</span>
           <span class="option custom">-- write your own --</span>
         </span>
